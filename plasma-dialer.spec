@@ -22,6 +22,8 @@ BuildRequires:	cmake(KF5DBusAddons)
 BuildRequires:	cmake(KF5Notifications)
 BuildRequires:	cmake(PulseAudio)
 BuildRequires:	cmake(TelepathyQt5)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	%mklibname phonenumber -d
 
 %description
