@@ -1,5 +1,5 @@
-%define snapshot 20200710
-%define commit 6be48498b6b93a8ce18ce923c2ea2d8f3d357e8b
+%define snapshot 20200825
+%define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
 Name:		plasma-dialer
 Version:	0.0
@@ -48,3 +48,4 @@ Dialer for Plasma Mobile
 %{_datadir}/icons/hicolor/scalable/apps/dialer.svg
 %{_datadir}/knotifications5/plasma_dialer.notifyrc
 %{_datadir}/telepathy/clients/Plasma.Dialer.client
+%{_sysconfdir}/xdg/autostart/telephony-services.desktop
