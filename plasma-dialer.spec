@@ -3,7 +3,7 @@
 
 Name:		plasma-dialer
 Version:	0.0
-Release:	%{?snapshot:0.%{snapshot}.}1
+Release:	%{?snapshot:0.%{snapshot}.}2
 Summary:	Dialer for Plasma Mobile
 Source0:	https://invent.kde.org/plasma-mobile/plasma-dialer/-/archive/master/plasma-dialer-master.tar.bz2
 License:	GPLv3
@@ -25,6 +25,11 @@ BuildRequires:	cmake(TelepathyQt5)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	%mklibname phonenumber -d
+Requires:	ofono
+Requires:	telepathy-ofono
+Requires:	telepathy-mission-control
+Requires:	telepathy-filesystem
+Requires:	telepathy-accounts-signon
 
 %description
 Dialer for Plasma Mobile
