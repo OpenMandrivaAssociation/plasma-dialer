@@ -1,11 +1,11 @@
-%define snapshot 20200825
-%define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
+#define snapshot 20200825
+#define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
 Name:		plasma-dialer
-Version:	0.0
-Release:	%{?snapshot:0.%{snapshot}.}2
+Version:	21.07
+Release:	%{?snapshot:0.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
-Source0:	https://invent.kde.org/plasma-mobile/plasma-dialer/-/archive/master/plasma-dialer-master.tar.bz2
+Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
 License:	GPLv3
 Group:		Applications/Productivity
 BuildRequires:	cmake
@@ -35,7 +35,7 @@ Requires:	telepathy-accounts-signon
 Dialer for Plasma Mobile
 
 %prep
-%autosetup -p1 -n plasma-dialer-master
+%autosetup -p1
 %cmake_kde5 -G Ninja
 
 %build
@@ -43,8 +43,9 @@ Dialer for Plasma Mobile
 
 %install
 %ninja_install -C build
+%find_lang %{name} --all-name
 
-%files
+%files -f %{name}.lang
 %{_bindir}/plasma-telepathy-approver
 %{_bindir}/plasmaphonedialer
 %{_datadir}/applications/org.kde.phone.dialer.desktop
@@ -52,5 +53,7 @@ Dialer for Plasma Mobile
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Plasma.Dialer.service
 %{_datadir}/icons/hicolor/scalable/apps/dialer.svg
 %{_datadir}/knotifications5/plasma_dialer.notifyrc
+%{_datadir}/metainfo/org.kde.phone.dialer.appdata.xml
 %{_datadir}/telepathy/clients/Plasma.Dialer.client
 %{_sysconfdir}/xdg/autostart/telephony-services.desktop
+%{_sysconfdir}/xdg/autostart/org.kde.phone.dialer.desktop
