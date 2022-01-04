@@ -2,8 +2,8 @@
 #define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
 Name:		plasma-dialer
-Version:	21.07
-Release:	%{?snapshot:0.%{snapshot}.}1
+Version:	21.12
+Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
 License:	GPLv3
@@ -17,19 +17,15 @@ BuildRequires:	cmake(Qt5Quick)
 BuildRequires:	cmake(Qt5Sql)
 BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Contacts)
 BuildRequires:	cmake(KF5People)
+BuildRequires:	cmake(KF5ModemManagerQt)
 BuildRequires:	cmake(KF5DBusAddons)
 BuildRequires:	cmake(KF5Notifications)
 BuildRequires:	cmake(PulseAudio)
-BuildRequires:	cmake(TelepathyQt5)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	%mklibname phonenumber -d
-Requires:	ofono
-Requires:	telepathy-ofono
-Requires:	telepathy-mission-control
-Requires:	telepathy-filesystem
-Requires:	telepathy-accounts-signon
 
 %description
 Dialer for Plasma Mobile
@@ -45,15 +41,21 @@ Dialer for Plasma Mobile
 %ninja_install -C build
 %find_lang %{name} --all-name
 
+# Not currently used by anything, so no need for
+# a -devel package so far
+rm -rf %{buildroot}%{_includedir} %{buildroot}%{_libdir}/*.a
+
 %files -f %{name}.lang
-%{_bindir}/plasma-telepathy-approver
 %{_bindir}/plasmaphonedialer
 %{_datadir}/applications/org.kde.phone.dialer.desktop
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Plasma.Approver.service
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Plasma.Dialer.service
 %{_datadir}/icons/hicolor/scalable/apps/dialer.svg
 %{_datadir}/knotifications5/plasma_dialer.notifyrc
 %{_datadir}/metainfo/org.kde.phone.dialer.appdata.xml
-%{_datadir}/telepathy/clients/Plasma.Dialer.client
-%{_sysconfdir}/xdg/autostart/telephony-services.desktop
-%{_sysconfdir}/xdg/autostart/org.kde.phone.dialer.desktop
+%{_sysconfdir}/xdg/autostart/org.kde.modem.daemon.desktop
+%{_sysconfdir}/xdg/autostart/org.kde.telephony.daemon.desktop
+%{_libdir}/libexec/kde-telephony-daemon
+%{_libdir}/libexec/modem-daemon
+%{_libdir}/qt5/qml/org/kde/telephony
+%{_datadir}/dbus-1/interfaces/org.kde.telephony.*.xml
+%{_datadir}/dbus-1/services/org.kde.modemdaemon.service
+%{_datadir}/dbus-1/services/org.kde.telephony.service
