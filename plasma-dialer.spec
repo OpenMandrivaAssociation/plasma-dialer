@@ -2,8 +2,8 @@
 #define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
 Name:		plasma-dialer
-Version:	21.12
-Release:	%{?snapshot:0.%{snapshot}.}2
+Version:	22.02
+Release:	%{?snapshot:0.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
 License:	GPLv3
@@ -29,6 +29,7 @@ BuildRequires:	cmake(KF5PulseAudioQt)
 BuildRequires:	cmake(PulseAudio)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(protobuf)
+BuildRequires:	pkgconfig(mpris-qt5)
 BuildRequires:	%mklibname phonenumber -d
 
 %description
