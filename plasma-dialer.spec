@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	cmake(PlasmaWaylandProtocols)
 BuildRequires:	%mklibname phonenumber -d
 
 %description
