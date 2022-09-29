@@ -32,6 +32,10 @@ BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	pkgconfig(mpris-qt5)
 BuildRequires:	pkgconfig(libcallaudio-0.1)
+BuildRequires:	pkgconfig(wayland-client)
+BuildRequires:	pkgconfig(wayland-server)
+BuildRequires:	pkgconfig(wayland-cursor)
+BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	%mklibname phonenumber -d
 
 %description
