@@ -17,7 +17,7 @@ BuildRequires:	cmake(Qt5Qml)
 BuildRequires:	cmake(Qt5Quick)
 BuildRequires:	cmake(Qt5Sql)
 BuildRequires:	cmake(Qt5Test)
-BuildRequires:	cmake(Qt5Wayland)
+BuildRequires:	cmake(Qt5WaylandClient)
 BuildRequires:	cmake(Qt5QuickControls2)
 BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5I18n)
@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	cmake(PlasmaWaylandProtocols)
+BuildRequires:	qt5-qtwayland-private-devel
 BuildRequires:	%mklibname phonenumber -d
 
 %description
