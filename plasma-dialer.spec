@@ -2,7 +2,7 @@
 #define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
 Name:		plasma-dialer
-Version:	22.11
+Version:	23.01.0
 Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
