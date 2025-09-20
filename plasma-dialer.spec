@@ -1,75 +1,72 @@
 #define snapshot 20200825
 #define commit 0974c6f3fe71164d9d2f4acfb861db07ff2b484d
 
+%define devname %{mklibname -d -s ktelephonymetatypes}
+
 Name:		plasma-dialer
-Version:	23.01.0
-Release:	%{?snapshot:1.%{snapshot}.}2
+Version:	6.4.5
+Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
-Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz
 License:	GPLv3
 Group:		Applications/Productivity
-BuildRequires:	cmake
-BuildRequires:	ninja
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Qt5Core)
-BuildRequires:	cmake(Qt5Feedback)
-BuildRequires:	cmake(Qt5Qml)
-BuildRequires:	cmake(Qt5Quick)
-BuildRequires:	cmake(Qt5Sql)
-BuildRequires:	cmake(Qt5Test)
-BuildRequires:	cmake(Qt5WaylandClient)
-BuildRequires:	cmake(Qt5QuickControls2)
-BuildRequires:	cmake(KF5CoreAddons)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5Contacts)
-BuildRequires:	cmake(KF5People)
-BuildRequires:	cmake(KF5ModemManagerQt)
-BuildRequires:	cmake(KF5DBusAddons)
-BuildRequires:	cmake(KF5Notifications)
-BuildRequires:	cmake(KF5PulseAudioQt)
-BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6Qml)
+BuildRequires:	cmake(Qt6Quick)
+BuildRequires:	cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Test)
+BuildRequires:	cmake(Qt6WaylandClient)
+BuildRequires:	cmake(Qt6QuickControls2)
+BuildRequires:	cmake(KF6CoreAddons)
+BuildRequires:	cmake(KF6I18n)
+BuildRequires:	cmake(KF6Contacts)
+BuildRequires:	cmake(KF6People)
+BuildRequires:	cmake(KF6ModemManagerQt)
+BuildRequires:	cmake(KF6DBusAddons)
+BuildRequires:	cmake(KF6Notifications)
+BuildRequires:	cmake(KF6PulseAudioQt)
+BuildRequires:	cmake(KF6KIO)
+BuildRequires:	cmake(KTactileFeedback)
 BuildRequires:	cmake(PulseAudio)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(protobuf)
-BuildRequires:	pkgconfig(mpris-qt5)
 BuildRequires:	pkgconfig(libcallaudio-0.1)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	cmake(PlasmaWaylandProtocols)
-BuildRequires:	qt5-qtwayland-private-devel
 BuildRequires:	%mklibname phonenumber -d
 
 %description
 Dialer for Plasma Mobile
 
-%prep
-%autosetup -p1
-%cmake_kde5 -G Ninja
+%package -n %{devname}
+Summary:	Development files for plasma-dialer
+Requires:	%{name} = %{EVRD}
 
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang %{name} --all-name
-
-# Not currently used by anything, so no need for
-# a -devel package so far
-rm -rf %{buildroot}%{_includedir} %{buildroot}%{_libdir}/*.a
+%description -n %{devname}
+Development files for plasma-dialer
 
 %files -f %{name}.lang
-%{_bindir}/plasmaphonedialer
-%{_datadir}/applications/org.kde.phone.dialer.desktop
-%{_datadir}/icons/hicolor/scalable/apps/dialer.svg
-%{_datadir}/knotifications5/plasma_dialer.notifyrc
-%{_datadir}/metainfo/org.kde.phone.dialer.appdata.xml
 %{_sysconfdir}/xdg/autostart/org.kde.modem.daemon.desktop
 %{_sysconfdir}/xdg/autostart/org.kde.telephony.daemon.desktop
+%{_bindir}/plasma-dialer
 %{_libdir}/libexec/kde-telephony-daemon
 %{_libdir}/libexec/modem-daemon
-%{_libdir}/qt5/qml/org/kde/telephony
+%{_qtdir}/qml/org/kde/telephony/libKTelephonyPluginDeclarative.so
+%{_qtdir}/qml/org/kde/telephony/qmldir
+%{_datadir}/applications/org.kde.plasma.dialer.desktop
 %{_datadir}/dbus-1/interfaces/org.kde.telephony.*.xml
 %{_datadir}/dbus-1/services/org.kde.modemdaemon.service
 %{_datadir}/dbus-1/services/org.kde.telephony.service
+%{_datadir}/icons/hicolor/scalable/apps/dialer.svg
+%{_datadir}/knotifications6/plasma-dialer.notifyrc
+%{_datadir}/metainfo/org.kde.plasma.dialer.appdata.xml
+
+%files -n %{devname}
+%{_libdir}/lib*.a
+%{_includedir}/KF6/kTelephonyMetaTypes
