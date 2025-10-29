@@ -4,7 +4,7 @@
 %define devname %{mklibname -d -s ktelephonymetatypes}
 
 Name:		plasma-dialer
-Version:	6.5.0
+Version:	6.5.1
 Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz
