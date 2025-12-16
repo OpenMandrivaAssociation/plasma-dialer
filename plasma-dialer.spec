@@ -4,7 +4,7 @@
 %define devname %{mklibname -d -s ktelephonymetatypes}
 
 Name:		plasma-dialer
-Version:	6.5.3
+Version:	6.5.4
 Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz
@@ -56,6 +56,7 @@ Development files for plasma-dialer
 %{_sysconfdir}/xdg/autostart/org.kde.modem.daemon.desktop
 %{_sysconfdir}/xdg/autostart/org.kde.telephony.daemon.desktop
 %{_bindir}/plasma-dialer
+%{_bindir}/plasma-dialer-fakeserver
 %{_libdir}/libexec/kde-telephony-daemon
 %{_libdir}/libexec/modem-daemon
 %{_qtdir}/qml/org/kde/telephony/libKTelephonyPluginDeclarative.so
