@@ -5,7 +5,7 @@
 
 Name:		plasma-dialer
 Version:	6.7.5
-Release:	%{?snapshot:1.%{snapshot}.}1
+Release:	%{?snapshot:1.%{snapshot}.}2
 Summary:	Dialer for Plasma Mobile
 Source0:	https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz
 License:	GPLv3
